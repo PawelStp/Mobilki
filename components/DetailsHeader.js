@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, View, Text } from 'react-native';
 import { withTheme, Icon } from 'react-native-material-ui';
 import { COLOR } from 'react-native-material-ui';
+import StarRatings from './StarRatings'
 
 const styles = StyleSheet.create({
   container: {
@@ -85,6 +86,9 @@ export default class DetailsHeader extends React.Component {
           <View style={[styles.item, styles.genre]}>
             <Text style={[styles.text, styles.genreText]}>{result.Genre}</Text>
           </View>
+        </View>
+        <View>
+          <StarRatings />
         </View>
       </View>
     );

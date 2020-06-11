@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 
 export default class SearchResults extends React.Component {
 
-  static PropTypes = {
+  static propTypes = {
     loading: PropTypes.bool.isRequired,
     results: PropTypes.array,
     onDetailRequest: PropTypes.func
