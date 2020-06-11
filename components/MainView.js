@@ -3,25 +3,25 @@ import PropTypes from 'prop-types';
 import { StyleSheet, View } from 'react-native';
 
 export default function MainView({ children }) {
-    return (
-        <View style={styles.container}>
-            {children}
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      {children}
+    </View>
+  );
 }
 
 MainView.propTypes = {
-    children: PropTypes.node,
+  children: PropTypes.node,
 };
 
 MainView.defaultProps = {
-    children: null,
+  children: null,
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        paddingTop: 30,
-    },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    paddingTop: 30,
+  },
 });

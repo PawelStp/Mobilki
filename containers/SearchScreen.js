@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import { Toolbar, COLOR } from 'react-native-material-ui';
-import SearchResults from './SearchResults'
-import MainView from './MainView';
+import SearchResults from '../components/SearchResults'
+import MainView from '../components/MainView';
 
 const styles = StyleSheet.create({
   titleText: {
@@ -36,7 +36,23 @@ export default class SearchScreen extends React.Component {
 
   handleSearchSubmit = () => {
     this.setState({ loading: true });
-    this.setState({ results: [{ Id: 1, Plot: 'Test', Genre: 'Sci-fi', Runtime: "150 min", Year: 2020, Title: 'Harry Potter', Poster: 'https://vignette.wikia.nocookie.net/harrypotter/images/6/6b/HP5a.jpg/revision/latest/top-crop/width/360/height/450?cb=20110716094537&path-prefix=pl' }, { Id: 2, Year: 2020, Title: 'title2', Poster: 'https://bajecznepokoje.pl/wp-content/uploads/2017/07/w3-51-510x510.jpg' }] });
+    this.setState({
+      results: [{
+        Id: 1,
+        Plot: ' It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,',
+        Genre: 'Sci-fi',
+        Runtime: "150 min",
+        Year: 2020,
+        Title: 'Harry Potter',
+        Poster: 'https://vignette.wikia.nocookie.net/harrypotter/images/6/6b/HP5a.jpg/revision/latest/top-crop/width/360/height/450?cb=20110716094537&path-prefix=pl'
+      },
+      {
+        Id: 2,
+        Year: 2020,
+        Title: 'title2',
+        Poster: 'https://bajecznepokoje.pl/wp-content/uploads/2017/07/w3-51-510x510.jpg'
+      }]
+    });
     this.setState({ loading: false });
   }
 

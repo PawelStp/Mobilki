@@ -2,7 +2,7 @@ import React from 'react';
 import { TextInput, StyleSheet, View } from 'react-native';
 import { Toolbar, COLOR } from 'react-native-material-ui';
 import ListTabContent from '../components/ListTabContent';
-import MainView from './MainView'
+import MainView from '../components/MainView'
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
