@@ -7,7 +7,6 @@ import HomeScreen from './containers/HomeScreen';
 import SearchScreen from './containers/SearchScreen';
 import DetailsScreen from './containers/DetailsScreen';
 
-
 const Stack = createStackNavigator();
 
 export default function App() {

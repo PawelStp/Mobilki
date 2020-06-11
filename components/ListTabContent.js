@@ -30,14 +30,11 @@ export default class ListTabContent extends React.Component {
   static propTypes = {
     rows: PropTypes.arrayOf(PropTypes.array),
     rowLength: PropTypes.number,
-  }
-
-  handleStartSearchCardPress = () => {
-    this.props.navigation.navigate('Search');
+    handleStartSearchCardPress: PropTypes.func
   }
 
   render() {
-    const { rows } = this.props;
+    const { rows, handleStartSearchCardPress } = this.props;
 
     return (
       <TabContent>
@@ -46,7 +43,7 @@ export default class ListTabContent extends React.Component {
             ?
             <View style={styles.startSearchContainer}>
               <SearchCard
-                onPress={this.handleStartSearchCardPress}
+                onPress={handleStartSearchCardPress}
               />
             </View>
             :

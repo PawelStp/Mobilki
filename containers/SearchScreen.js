@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
 export default class SearchScreen extends React.Component {
   constructor(props) {
     super(props);
-
+    const deviceId = Expo.Constants.deviceId;
+    console.log(deviceId);
     this.state = {
       searchTerm: '',
       loading: false,

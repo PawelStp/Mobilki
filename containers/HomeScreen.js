@@ -17,6 +17,10 @@ export default class HomeScreen extends React.Component {
     this.props.navigation.navigate('Search');
   }
 
+  handleStartSearchCardPress = () => {
+    this.props.navigation.navigate('Search');
+  }
+
   render() {
 
     return (
@@ -27,7 +31,7 @@ export default class HomeScreen extends React.Component {
           style={{ container: { backgroundColor: COLOR.blueGrey500 } }}
           onRightElementPress={this.handleSearchIconPress}
         />
-        <ListTabContent rows={this.state.rows} navigation={this.props.navigation} />
+        <ListTabContent rows={this.state.rows} handleStartSearchCardPress={this.handleStartSearchCardPress} />
       </MainView>);
   }
 }
