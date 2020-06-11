@@ -1,8 +1,8 @@
 import React from 'react';
 import { TextInput, StyleSheet, View } from 'react-native';
-import { COLOR } from 'react-native-material-ui';
-import ListTabContent from './../ListTabContent';
-import MainView from './../MainView'
+import { Toolbar, COLOR } from 'react-native-material-ui';
+import ListTabContent from '../components/ListTabContent';
+import MainView from './MainView'
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -13,10 +13,20 @@ export default class HomeScreen extends React.Component {
     }
   }
 
+  handleSearchIconPress = () => {
+    this.props.navigation.navigate('Search');
+  }
+
   render() {
 
     return (
       <MainView>
+        <Toolbar
+          centerElement={'Movies'}
+          rightElement={'search'}
+          style={{ container: { backgroundColor: COLOR.blueGrey500 } }}
+          onRightElementPress={this.handleSearchIconPress}
+        />
         <ListTabContent rows={this.state.rows} navigation={this.props.navigation} />
       </MainView>);
   }

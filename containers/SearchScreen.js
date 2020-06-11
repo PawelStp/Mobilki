@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { View, TextInput, StyleSheet } from 'react-native';
-import { Toolbar } from 'react-native-material-ui';
+import { Toolbar, COLOR } from 'react-native-material-ui';
 import SearchResults from './SearchResults'
 import MainView from './MainView';
 
@@ -23,6 +22,10 @@ export default class SearchScreen extends React.Component {
     }
   }
 
+  handleBackIconPress = () => {
+    this.props.navigation.goBack();
+  }
+
   handleSearchTermChange = (term) => {
     this.setState({ searchTerm: term });
   }
@@ -33,7 +36,7 @@ export default class SearchScreen extends React.Component {
 
   handleSearchSubmit = () => {
     this.setState({ loading: true });
-    this.setState({ results: [{ Id: 1, Plot: 'Test' , Genre: 'Sci-fi', Runtime: "150 min", Year: 2020, Title: 'Harry Potter', Poster: 'https://vignette.wikia.nocookie.net/harrypotter/images/6/6b/HP5a.jpg/revision/latest/top-crop/width/360/height/450?cb=20110716094537&path-prefix=pl' }, { Id: 2, Year: 2020, Title: 'title2', Poster: 'https://bajecznepokoje.pl/wp-content/uploads/2017/07/w3-51-510x510.jpg' }] });
+    this.setState({ results: [{ Id: 1, Plot: 'Test', Genre: 'Sci-fi', Runtime: "150 min", Year: 2020, Title: 'Harry Potter', Poster: 'https://vignette.wikia.nocookie.net/harrypotter/images/6/6b/HP5a.jpg/revision/latest/top-crop/width/360/height/450?cb=20110716094537&path-prefix=pl' }, { Id: 2, Year: 2020, Title: 'title2', Poster: 'https://bajecznepokoje.pl/wp-content/uploads/2017/07/w3-51-510x510.jpg' }] });
     this.setState({ loading: false });
   }
 
@@ -43,13 +46,14 @@ export default class SearchScreen extends React.Component {
     });
   }
 
-
   render() {
 
     return (
       <MainView >
         <Toolbar
           leftElement="arrow-back"
+          onLeftElementPress={this.handleBackIconPress}
+          style={{ container: { backgroundColor: COLOR.blueGrey500 } }}
           centerElement={(
             <TextInput
               autoFocus

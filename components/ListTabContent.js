@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, ScrollView, View } from 'react-native';
-import TabContent from './HomeScreen/TabContent';
-import SearchCard from './SearchCard'
+import TabContent from './TabContent'
+import SearchCard from '../containers/SearchCard'
 
 const styles = StyleSheet.create({
   startSearchContainer: {

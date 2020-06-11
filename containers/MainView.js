@@ -21,7 +21,7 @@ MainView.defaultProps = {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',    
-        //paddingTop: Constants.statusBarHeight,
+        backgroundColor: '#fff',
+        paddingTop: 30,
     },
 });
