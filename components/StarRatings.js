@@ -1,11 +1,16 @@
 import React from 'react';
 import StarRating from 'react-native-star-rating';
+import PropTypes from 'prop-types';
 
 export default class StarRatings extends React.Component {
+    static propTypes = {
+        movie: PropTypes.object.isRequired,
+    }
+
     constructor(props) {
         super(props);
         this.state = {
-            starCount: 3.5
+            starCount: this.props.movie.rateAverage
         };
     }
 

@@ -31,7 +31,7 @@ export default class SearchResults extends React.Component {
 
   render() {
     const { loading, results, onDetailRequest } = this.props;
-    
+
     return (
       <View style={styles.searchResults}>
         {loading ?

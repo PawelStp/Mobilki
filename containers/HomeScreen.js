@@ -9,16 +9,29 @@ export default class HomeScreen extends React.Component {
     super(props);
 
     this.state = {
-      rows: [],
+      favorites: [],
     }
   }
 
   handleSearchIconPress = () => {
-    this.props.navigation.navigate('Search');
+    this.props.navigation.navigate('Search', { favorites: this.state.favorites });
   }
 
   handleStartSearchCardPress = () => {
     this.props.navigation.navigate('Search');
+  }
+
+  componentDidMount() {
+    fetch(`https://mongpos.azurewebsites.net/api/device?deviceUniqueId=${Expo.Constants.deviceId}`)
+      .then((response) => response ? response.json() : response)
+      .then((json) => this.setState({ favorites: json.favourites }))
+  }
+
+  handleDetailRequest = (movie) => {
+    this.props.navigation.navigate('Details', {
+      movie,
+      libraryFavoritesAdded: true
+    });
   }
 
   render() {
@@ -31,7 +44,11 @@ export default class HomeScreen extends React.Component {
           style={{ container: { backgroundColor: COLOR.blueGrey500 } }}
           onRightElementPress={this.handleSearchIconPress}
         />
-        <ListTabContent rows={this.state.rows} handleStartSearchCardPress={this.handleStartSearchCardPress} />
+        <ListTabContent
+          rows={this.state.favorites}
+          handleStartSearchCardPress={this.handleStartSearchCardPress}
+          onDetailRequest={this.handleDetailRequest}
+        />
       </MainView>);
   }
 }

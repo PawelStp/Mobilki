@@ -14,8 +14,6 @@ const styles = StyleSheet.create({
 export default class SearchScreen extends React.Component {
   constructor(props) {
     super(props);
-    const deviceId = Expo.Constants.deviceId;
-    console.log(deviceId);
     this.state = {
       searchTerm: '',
       loading: false,
@@ -37,30 +35,21 @@ export default class SearchScreen extends React.Component {
 
   handleSearchSubmit = () => {
     this.setState({ loading: true });
-    this.setState({
-      results: [{
-        Id: 1,
-        Plot: ' It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,',
-        Genre: 'Sci-fi',
-        Runtime: "150 min",
-        Year: 2020,
-        Title: 'Harry Potter',
-        Poster: 'https://vignette.wikia.nocookie.net/harrypotter/images/6/6b/HP5a.jpg/revision/latest/top-crop/width/360/height/450?cb=20110716094537&path-prefix=pl'
-      },
-      {
-        Id: 2,
-        Year: 2020,
-        Title: 'title2',
-        Poster: 'https://bajecznepokoje.pl/wp-content/uploads/2017/07/w3-51-510x510.jpg'
-      }]
-    });
+    this.getMovies();
     this.setState({ loading: false });
   }
 
   handleDetailRequest = (movie) => {
     this.props.navigation.navigate('Details', {
       movie,
+      libraryFavoritesAdded: this.props.route.params.favorites.find(m => m.id === movie.id)
     });
+  }
+
+  getMovies = () => {
+    fetch(`https://mongpos.azurewebsites.net/api/movie?query=${this.state.searchTerm}`)
+      .then((response) => response.json())
+      .then((json) => this.setState({ results: json }))
   }
 
   render() {

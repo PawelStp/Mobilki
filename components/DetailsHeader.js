@@ -57,12 +57,10 @@ export default class DetailsHeader extends React.Component {
   render() {
     const { result } = this.props;
 
-    console.log(result);
-
     return (
       <View style={[styles.container, { backgroundColor: COLOR.blueGrey500 }]}>
         <View style={[styles.item, styles.title]}>
-          <Text style={[styles.text, styles.titleText]}>{result.Title}</Text>
+          <Text style={[styles.text, styles.titleText]}>{result.title}</Text>
         </View>
         <View style={styles.line}>
           <View style={[styles.item, styles.year]}>
@@ -71,7 +69,7 @@ export default class DetailsHeader extends React.Component {
               name="event-note"
               color="white"
             />
-            <Text style={[styles.text, styles.yearText]}>{result.Year}</Text>
+            <Text style={[styles.text, styles.yearText]}>{result.year}</Text>
           </View>
           <View style={[styles.item, styles.duration]}>
             <Icon
@@ -79,16 +77,16 @@ export default class DetailsHeader extends React.Component {
               name="timer"
               color="white"
             />
-            <Text style={[styles.text, styles.durationText]}>{result.Runtime}</Text>
+            <Text style={[styles.text, styles.durationText]}>{result.duration} min</Text>
           </View>
         </View>
         <View style={styles.line}>
           <View style={[styles.item, styles.genre]}>
-            <Text style={[styles.text, styles.genreText]}>{result.Genre}</Text>
+            <Text style={[styles.text, styles.genreText]}>{result.genre}</Text>
           </View>
         </View>
         <View>
-          <StarRatings />
+          <StarRatings movie={result} />
         </View>
       </View>
     );

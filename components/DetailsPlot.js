@@ -38,7 +38,7 @@ export default class DetailsPlot extends React.Component {
           />
         </View>
         <View style={styles.textContainer}>
-          <Text style={styles.text}>{result.Plot}</Text>
+          <Text style={styles.text}>{result.description}</Text>
         </View>
       </View>
     );

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, ScrollView, View } from 'react-native';
 import TabContent from './TabContent'
 import SearchCard from './SearchCard'
+import MovieCard from './MovieCard'
 
 const styles = StyleSheet.create({
   startSearchContainer: {
@@ -30,11 +31,12 @@ export default class ListTabContent extends React.Component {
   static propTypes = {
     rows: PropTypes.arrayOf(PropTypes.array),
     rowLength: PropTypes.number,
-    handleStartSearchCardPress: PropTypes.func
+    handleStartSearchCardPress: PropTypes.func,
+    onDetailRequest: PropTypes.func
   }
 
   render() {
-    const { rows, handleStartSearchCardPress } = this.props;
+    const { rows, handleStartSearchCardPress, onDetailRequest } = this.props;
 
     return (
       <TabContent>
@@ -48,7 +50,13 @@ export default class ListTabContent extends React.Component {
             </View>
             :
             <ScrollView>
-
+            {rows.map(movie => (
+              <MovieCard
+                key={movie.Id}
+                movie={movie}
+                onPress={onDetailRequest}
+              />
+            ))}
             </ScrollView>
         }
       </TabContent>

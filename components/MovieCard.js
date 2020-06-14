@@ -59,14 +59,14 @@ export default class MovieCard extends React.Component {
         >
           <Subheader
             lines={2}
-            text={`${movie.Title} (${movie.Year})`}
+            text={`${movie.title} - ${movie.director} (${movie.year})`}
             style={{
               text: styles.movieTitle,
             }}
           />
           <FitImage
             style={styles.moviePoster}
-            source={{ uri: movie.Poster }}
+            source={{ uri: movie.imagePath }}
           />
         </Card>
       </View>
