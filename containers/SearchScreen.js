@@ -42,7 +42,7 @@ export default class SearchScreen extends React.Component {
   handleDetailRequest = (movie) => {
     this.props.navigation.navigate('Details', {
       movie,
-      libraryFavoritesAdded: this.props.route.params.favorites.find(m => m.id === movie.id)
+      libraryFavoritesAdded: this.props.route.params?.favorites?.find(m => m.id === movie.id)
     });
   }
 
@@ -66,7 +66,7 @@ export default class SearchScreen extends React.Component {
               value={this.state.searchTerm}
               onChangeText={this.handleSearchTermChange}
               onSubmitEditing={this.handleSearchSubmit}
-              placeholder="Search movies..."
+              placeholder="Szukaj filmu..."
               underlineColorAndroid="transparent"
               style={
                 styles.titleText

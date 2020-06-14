@@ -22,13 +22,20 @@ export default class DetailsScreen extends React.Component {
     movie: PropTypes.object.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      libraryFavoritesAdded: this.props.route.params.libraryFavoritesAdded,
+    }
+  }
+
   handleBackIconPress = () => {
     this.props.navigation.goBack();
   }
 
   handleFavoriteIcon = () => {
-    const libraryFavoritesAdded = this.props.route.params;
-    if (!libraryFavoritesAdded) {
+    if (!this.state.libraryFavoritesAdded) {
       fetch(`https://mongpos.azurewebsites.net/api/Device/add-favorite?deviceUniqueId=${Expo.Constants.deviceId}&movieId=${this.props.route.params.movie.id}`, {
         method: 'PUT',
         headers: {
@@ -36,7 +43,7 @@ export default class DetailsScreen extends React.Component {
           'Content-Type': 'application/json'
         },
         body: null
-      });
+      }).then(() => this.setState({ libraryFavoritesAdded: true }));
     } else {
       fetch(`https://mongpos.azurewebsites.net/api/Device/remove-favorite?deviceUniqueId=${Expo.Constants.deviceId}&movieId=${this.props.route.params.movie.id}`, {
         method: 'PUT',
@@ -45,14 +52,13 @@ export default class DetailsScreen extends React.Component {
           'Content-Type': 'application/json'
         },
         body: null
-      });
+      }).then(() => this.setState({ libraryFavoritesAdded: false }));;
     }
   }
 
   render() {
     const {
-      movie,
-      libraryFavoritesAdded
+      movie
     } = this.props.route.params;
 
     return (
@@ -61,8 +67,8 @@ export default class DetailsScreen extends React.Component {
           leftElement="arrow-back"
           onLeftElementPress={this.handleBackIconPress}
           style={{ container: { backgroundColor: COLOR.blueGrey500 } }}
-          centerElement="Movie Details"
-          rightElement={libraryFavoritesAdded ? 'favorite' : 'favorite-border'}
+          centerElement="Szczegóły"
+          rightElement={this.state.libraryFavoritesAdded ? 'favorite' : 'favorite-border'}
           onRightElementPress={this.handleFavoriteIcon}
         />
         <ScrollView>

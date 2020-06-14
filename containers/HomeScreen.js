@@ -3,13 +3,14 @@ import { TextInput, StyleSheet, View } from 'react-native';
 import { Toolbar, COLOR } from 'react-native-material-ui';
 import ListTabContent from '../components/ListTabContent';
 import MainView from '../components/MainView'
+import { bool } from 'prop-types';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      favorites: [],
+      favorites: []
     }
   }
 
@@ -21,12 +22,6 @@ export default class HomeScreen extends React.Component {
     this.props.navigation.navigate('Search');
   }
 
-  componentDidMount() {
-    fetch(`https://mongpos.azurewebsites.net/api/device?deviceUniqueId=${Expo.Constants.deviceId}`)
-      .then((response) => response ? response.json() : response)
-      .then((json) => this.setState({ favorites: json.favourites }))
-  }
-
   handleDetailRequest = (movie) => {
     this.props.navigation.navigate('Details', {
       movie,
@@ -34,12 +29,24 @@ export default class HomeScreen extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this._unsubscribe = this.props.navigation.addListener('focus', () => {
+      fetch(`https://mongpos.azurewebsites.net/api/device?deviceUniqueId=${Expo.Constants.deviceId}`)
+        .then((response) => response ? response.json() : response)
+        .then((json) => this.setState({ favorites: json.favourites }))
+    });
+  }
+
+  componentWillUnmount() {
+    this._unsubscribe();
+  }
+
   render() {
 
     return (
       <MainView>
         <Toolbar
-          centerElement={'Movies'}
+          centerElement={'Moja lista'}
           rightElement={'search'}
           style={{ container: { backgroundColor: COLOR.blueGrey500 } }}
           onRightElementPress={this.handleSearchIconPress}

@@ -57,8 +57,8 @@ export default class SearchCard extends React.Component {
             />
           </View>
           <View>
-            <TextView>Nothing to see here yet...</TextView>
-            <TextView>Tap to start searching!</TextView>
+            <TextView>Nic tu nie ma...</TextView>
+            <TextView>Kliknij by zacząć szukać!</TextView>
           </View>
         </View>
       </Card>
