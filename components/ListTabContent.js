@@ -50,13 +50,13 @@ export default class ListTabContent extends React.Component {
             </View>
             :
             <ScrollView>
-            {rows.map(movie => (
-              <MovieCard
-                key={movie.Id}
-                movie={movie}
-                onPress={onDetailRequest}
-              />
-            ))}
+              {rows.map(movie => (
+                <MovieCard
+                  key={movie.Id}
+                  movie={movie}
+                  onPress={onDetailRequest}
+                />
+              ))}
             </ScrollView>
         }
       </TabContent>

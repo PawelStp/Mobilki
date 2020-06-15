@@ -1,17 +1,14 @@
 import React from 'react';
-import { TextInput, StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Toolbar, COLOR } from 'react-native-material-ui';
 import ListTabContent from '../components/ListTabContent';
 import MainView from '../components/MainView'
-import { bool } from 'prop-types';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      favorites: []
-    }
+    this.state = { favorites: [] }
   }
 
   handleSearchIconPress = () => {
@@ -59,7 +56,6 @@ export default class HomeScreen extends React.Component {
       </MainView>);
   }
 }
-
 
 const styles = StyleSheet.create({
   titleText: {

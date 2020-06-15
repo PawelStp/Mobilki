@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
 });
 
 export default class DetailsScreen extends React.Component {
-
   static propTypes = {
     movie: PropTypes.object.isRequired,
   };
@@ -57,9 +56,7 @@ export default class DetailsScreen extends React.Component {
   }
 
   render() {
-    const {
-      movie
-    } = this.props.route.params;
+    const { movie } = this.props.route.params;
 
     return (
       <MainView>

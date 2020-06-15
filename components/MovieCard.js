@@ -55,8 +55,7 @@ export default class MovieCard extends React.Component {
       <View>
         <Card
           style={{ container: [styles.container, propsStyle.container] }}
-          onPress={this.handlePress}
-        >
+          onPress={this.handlePress}>
           <Subheader
             lines={2}
             text={`${movie.title} - ${movie.director} (${movie.year})`}
